@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Color Palette (Matched from invitation) --- */
+        :root {
+            --color-gold: #D4AF37;
+            --color-red-maroon: #B22222;
+            --color-brown-header: #8B4513;
+            --color-text-dark: #333;
+            --color-text-body: #4a4a4a;
+            --bg-card: #fffafa;
+            --bg-page: #fefcf5;
+        }
+
+        /* --- Page Body Styling --- */
+        body {
+            /* Using a classic serif font for the body */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: var(--bg-page);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- Mango Leaf Animation (No change) --- */
+        #leaf-animation-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: 1000; overflow: hidden; animation: hideOverlay 0s 3.1s forwards;
+        }
+        .curtain {
+            position: absolute; top: 0; width: 50.1%; height: 100%;
+            background-color: #34A853; box-sizing: border-box;
+            animation-duration: 2s; animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out; animation-delay: 1s;
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+        }
+        .curtain span { font-size: 2.5rem; color: rgba(255, 255, 255, 0.3); transform: rotate(60deg); }
+        #left-curtain { left: 0; animation-name: slideLeft; }
+        #right-curtain { right: 0; animation-name: slideRight; }
+        @keyframes slideLeft { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+        @keyframes slideRight { from { transform: translateX(0); } to { transform: translateX(100%); } }
+        @keyframes hideOverlay { to { visibility: hidden; } }
+
+        /* --- Invitation Card Styling --- */
+        .invitation-card {
+            max-width: 900px;
+            width: 100%;
+            margin: 20px;
+            padding: 30px;
+            background: var(--bg-card);
+            /* Using the 'gold' color for the main border */
+            border: 2px solid var(--color-gold);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: var(--color-text-body);
+        }
+
+        .invitation-card .header {
+            font-size: 1.1rem;
+            /* Using the 'brownish-red' color from the original */
+            color: var(--color-brown-header);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* --- Two-Column Layout --- */
+        .content-wrapper { display: flex; flex-wrap: wrap; width: 100%; }
+        .column { flex: 1; min-width: 300px; padding: 0 20px; }
+
+        .column.telugu {
+            /* Setting the Telugu font */
+            font-family: 'Tenali Ramakrishna', 'Noto Sans Telugu', sans-serif;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        /* --- Font Styles (Matched from invitation) --- */
+        .column h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            color: var(--color-text-dark);
+            margin: 10px 0;
+        }
+
+        .column h2 {
+            /* Using a script font for 'Wedding Invitation' */
+            font-family: 'Brush Script MT', 'cursive';
+            font-size: 3rem;
+            /* Using the 'red-maroon' color */
+            color: var(--color-red-maroon);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        /* Telugu Headings */
+        .column.telugu h1 {
+            font-family: 'Tenali Ramakrishna', sans-serif;
+            font-size: 3rem;
+        }
+        .column.telugu h2 {
+            font-family: 'Tenali Ramakrishna', sans-serif;
+            font-size: 3.5rem;
+            margin-top: 10px;
+            color: var(--color-red-maroon);
+        }
+
+        .parents { font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; }
+        .column.telugu .parents { font-size: 1.2rem; line-height: 1.8; }
+        .invitation-text { font-size: 1.1rem; margin: 25px 0; line-height: 1.6; }
+        .column.telugu .invitation-text { font-size: 1.4rem; }
+
+        .couple-names { margin: 30px 0; }
+        .couple-names p { font-size: 1.2rem; margin: 5px 0; }
+        
+        .couple-names .name {
+            /* Using the elegant 'Dancing Script' for names */
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem; /* Larger size for this script */
+            font-weight: bold;
+            /* Using the 'red-maroon' color */
+            color: var(--color-red-maroon);
+        }
+
+        .column.telugu .couple-names .name {
+            font-family: 'Tenali Ramakrishna', sans-serif;
+            font-size: 2.8rem;
+            color: var(--color-red-maroon);
+        }
+        
+        .column.telugu .couple-names p { font-size: 1.4rem; }
+        .groom-details { font-size: 1rem; font-style: italic; margin-top: -15px; }
+        .column.telugu .groom-details { font-size: 1.2rem; font-style: normal; line-height: 1.6; }
+
+        .event-details {
+            /* Using the 'gold' color for the dashed borders */
+            border-top: 1px dashed var(--color-gold);
+            border-bottom: 1px dashed var(--color-gold);
+            padding: 20px 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .event-item { display: flex; align-items: flex-start; margin-bottom: 20px; }
+        .event-item strong {
+            font-size: 1.1rem;
+            color: var(--color-text-dark);
+            width: 150px;
+            flex-shrink: 0;
+        }
+        .column.telugu .event-item strong { font-size: 1.3rem; width: 140px; }
+        .event-item p { margin: 0; line-height: 1.6; }
+
+        .hosts { margin-top: 30px; font-size: 1.2rem; font-weight: bold; color: var(--color-text-dark); }
+        .column.telugu .hosts { font-size: 1.5rem; }
+        .compliments { margin-top: 10px; font-size: 1rem; font-style: italic; color: #555; }
+        .column.telugu .compliments { font-size: 1.2rem; font-style: normal; }
+        
+        /* --- Responsive Separator --- */
+        @media (max-width: 768px) {
+            .column.telugu {
+                /* Using 'gold' for the mobile separator */
+                border-left: none;
+                border-top: 1px dashed var(--color-gold);
+                margin-top: 30px;
+                padding-top: 30px;
+            }
+        }
+        @media (min-width: 769px) {
+            .column.telugu {
+                /* Using 'gold' for the desktop separator */
+                border-left: 1px dashed var(--color-gold);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="leaf-animation-overlay">
+        <div class="curtain" id="left-curtain">
+            <span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span>
+        </div>
+        <div class="curtain" id="right-curtain">
+            <span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span><span>🍃</span>
+        </div>
+    </div>
+
+    <div class="invitation-card">
+        
+        <div class="header">
+            Srirasthu Subhamasthu Avighnamasthu
+        </div>
+
+        <div class="content-wrapper">
+            
+            <div class="column english">
+                <h1>Kurapati's</h1>
+                <h2>Wedding Invitation</h2>
+
+                <div class="parents">
+                    Blessings of Sri Kurapati Kotamraju Varma (Late), Smt. Bhunumathi<br>
+                    <strong>Sri Kurapati Venkateswara Raju, Smt. Nagasri</strong>
+                </div>
+
+                <p class="invitation-text">
+                    Solicit your gracious presence with family on the auspicious
+                    occasion of the marriage of our only daughter
+                </p>
+
+                <div class="couple-names">
+                    <p>Chy. La. Sou.</p>
+                    <p class="name">Vagdevi</p>
+                    <p>with</p>
+                    <p class="name">Bhargav Raju</p>
+                </div>
+
+                <p class="groom-details">
+                    (Son of Sri Sarikonda Ramakrishnam Raju, Smt. Deeksha<br>
+                    of Vinjamuru, Nellore Dist.)
+                </p>
+
+                <div class="event-details">
+                    <div class="event-item">
+                        <strong>Sumuhurtham:</strong>
+                        <p>
+                            On Sunday 02nd November, 2025 at Night 10:04 p.m.<br>
+                            <span style="font-size: 0.9em; font-style: italic;">Uttarabhadra Nakshatrayuktha, Midhuna Lagnam.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="event-item">
+                        <strong>Venue:</strong>
+                        <p>
+                            Gajuwaka Club, Jaggu Junction,<br>
+                            Backside Petrol Bunk,<br>
+                            Gajuwaka, Visakhapatnam.
+                        </p>
+                    </div>
+
+                    <div class="event-item">
+                        <strong>Reception & Dinner:</strong>
+                        <p>
+                            On Sunday 02nd November, 2025<br>
+                            from 7.00 p.m. onwards<br>
+                            at the Marriage Venue.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hosts">
+                    Yours,<br>
+                    Sri Kurapati Venkateswara Raju, Smt. Nagasri
+                </div>
+
+                <div class="compliments">
+                    With Best Compliments from: Near & Dear
+                </div>
+            </div>
+
+            <div class="column telugu">
+                <h1>కురపాటి వారి</h1>
+                <h2>పెండ్లిపిలుపు</h2>
+
+                <div class="parents">
+                    శ్రీ కురపాటి కోటంరాజువర్మ (లేట్), శ్రీమతి భూనుమతి దంపతుల ఆశీస్సులతో...<br>
+                    <strong>శ్రీ కురపాటి వెంకటేశ్వర రాజు, శ్రీమతి నాగశ్రీ దంపతులు</strong>
+                </div>
+
+                <p class="invitation-text">
+                    వ్రాయు శుభలేఖార్ధములు<br>
+                    మా ఏకైక పుత్రిక
+                </p>
+
+                <div class="couple-names">
+                    <p>వధువు: చి॥ల॥సౌ॥</p>
+                    <p class="name">వాగ్దేవి</p>
+                    <p>వరుడు: చి॥</p>
+                    <p class="name">భార్గవ్ రాజు</p>
+                </div>
+
+                <p class="groom-details">
+                    (నెల్లూరు జిల్లా, వింజమూరు గ్రామ వాస్తవ్యులు<br>
+                    శ్రీ సరికೊಂಡ రామకృష్ణంరాజు, శ్రీమతి దీక్ష దంపతుల పుత్రుడు)
+                </p>
+
+                <div class="event-details">
+                    <div class="event-item">
+                        <strong>సుముహూర్తం:</strong>
+                        <p>
+                            ది॥ 02-11-2025 ఆదివారం<br>
+                            రాత్రి గం॥ 10:04 ని॥కు<br>
+                            <span style="font-size: 0.9em;">ఉత్తరాభాద్ర నక్షత్రయుక్త, మిధున లగ్నం.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="event-item">
+                        <strong>కల్యాణవేదిక:</strong>
+                        <p>
+                            గాజువాక క్లబ్, జగ్గు జంక్షన్,<br>
+                            పెట్రోల్ బంక్ వెనుక,<br>
+                            గాజువాక, విశాఖపట్నం.
+                        </p>
+                    </div>
+
+                    <div class="event-item">
+                        <strong>అల్పాహార & విందు:</strong>
+                        <p>
+                            ది॥ 02-11-2025 ఆదివారం<br>
+                            రాత్రి 7.00 గం॥ల నుండి<br>
+                            కల్యాణవేదిక వద్ద.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hosts">
+                    ఇట్లు,<br>
+                    శ్రీ కురపాటి వెంకటేశ్వర రాజు, శ్రీమతి నాగశ్రీ
+                </div>
+
+                <div class="compliments">
+                    అభిలాషులు: బంధు మిత్రులు
+                </div>
+            </div>
+            
+        </div> </div> </body>
+</html>
