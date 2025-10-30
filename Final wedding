@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurapati Wedding Invitation</title>
+    <title>Kurapati Wedding Invitation - Digital Replica</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -13,14 +13,14 @@
         /* --- Color Palette & Variables --- */
         :root {
             --color-gold: #D4AF37; /* Consistent Gold tone */
-            --color-maroon: #8B1A28; /* Deep Rich Red/Maroon for headings */
+            --color-maroon: #8B1A28; /* Deep Rich Red/Maroon */
             --color-text-dark: #222;
             --color-text-light: #555;
             --bg-page: #f9f7f0; /* Creamy White */
             --border-color: #e0d9c9; /* Subtle page break line color */
         }
 
-        /* --- Page Body Styling --- */
+        /* --- Page Body Styling (No Complex Animations) --- */
         body {
             font-family: 'Cormorant Garamond', 'Georgia', serif;
             background-color: var(--bg-page);
@@ -31,17 +31,21 @@
             align-items: center;
             min-height: 100vh;
         }
+
+        /* --- NOTE: Add your Ganesha/Deity Image Banners Here --- */
+        /* You must upload your Ganesha and Deity images and use the <img> tag 
+           to place them above the invitation-spread container for the cover look. 
+           Example: <img src="your_ganesha_cover.jpg" style="max-width: 1000px; width: 95%;"> */
         
         /* --- Outer Container simulating the PDF Spread --- */
         .invitation-spread {
             max-width: 1000px;
             width: 95%;
             margin: 0 auto;
-            background: #ffffff; /* White card background */
+            background: #ffffff;
             border: 2px solid var(--border-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex; /* Flexbox for two-column layout */
-            overflow: hidden;
+            display: flex;
             position: relative;
         }
 
@@ -62,10 +66,10 @@
             right: 0;
             height: 100%;
             width: 1px;
-            background-color: var(--border-color); /* Subtle line in the middle */
+            background-color: var(--border-color);
         }
 
-        /* --- Header Styles (Matching PDF) --- */
+        /* --- Header Styles --- */
         .header-section {
             display: flex;
             justify-content: space-between;
@@ -78,7 +82,7 @@
             font-weight: 700;
         }
         
-        /* Placeholder for Ganesha/Traditional Icon */
+        /* Placeholder for small icon in header (Top left of PDF) */
         .icon {
             width: 30px;
             height: 30px;
@@ -94,14 +98,14 @@
         /* --- Typography (English - Left) --- */
         .page-half.english h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 400;
             color: var(--color-text-dark);
-            margin: 0;
+            margin: 0 0 -10px 0;
         }
         .page-half.english h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: var(--color-maroon);
             margin: 0 0 20px 0;
             line-height: 1;
@@ -124,12 +128,12 @@
             line-height: 1.8;
         }
         .page-half.telugu h1 {
-            font-size: 2.2rem;
+            font-size: 3rem;
             color: var(--color-text-dark);
             margin: 0;
         }
         .page-half.telugu h2 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--color-maroon);
             margin: 0 0 20px 0;
             line-height: 1;
@@ -141,7 +145,7 @@
             font-style: italic;
         }
 
-        /* --- Event Details (Table/List Style) --- */
+        /* --- Event Details (List Style) --- */
         .event-details { margin: 25px 0; }
         .event-item {
             margin-bottom: 10px;
@@ -150,7 +154,7 @@
         }
         .event-item strong {
             color: var(--color-maroon);
-            width: 140px; /* Aligns the start of the details */
+            width: 140px;
             flex-shrink: 0;
             font-weight: 700;
             position: relative;
@@ -192,12 +196,12 @@
         /* --- Mobile Responsiveness --- */
         @media (max-width: 900px) {
             .invitation-spread {
-                flex-direction: column; /* Stacks the pages vertically */
+                flex-direction: column;
                 max-width: 500px;
                 width: 100%;
             }
-            .page-half:first-child::after { content: none; } /* Remove vertical divider */
-            .page-half { padding-bottom: 50px; } /* Add padding to bottom of each stacked section */
+            .page-half:first-child::after { content: none; }
+            .page-half { padding-bottom: 50px; }
             .page-half.telugu { border-top: 1px solid var(--border-color); padding-top: 50px; }
             .s3-link { position: static; }
         }
@@ -211,10 +215,10 @@
             
             <div class="header-section">
                 <div class="icon" title="Traditional Icon"></div>
-                [cite_start]<p class="header-text">Srirasthu Subhamasthu Avighnamasthu [cite: 3, 4, 6]</p>
+                [cite_start]<p class="header-text">Srirasthu [cite: 3] [cite_start]Subhamasthu [cite: 4] [cite_start]Avighnamasthu [cite: 6]</p>
             </div>
             
-            [cite_start]<h1 style="font-size: 2.5rem; font-weight: 400; margin-bottom: -10px;">Kurapati's [cite: 5]</h1>
+            [cite_start]<h1 style="margin-bottom: -10px;">Kurapati's [cite: 5]</h1>
             [cite_start]<h2 style="font-size: 3.8rem;">Wedding Invitation [cite: 5]</h2>
 
             <div class="parents-en">
@@ -229,7 +233,7 @@
             <div class="couple-names-en">
                 <p style="margin-bottom: 5px;">Chy. [cite_start]La. Sou. [cite: 9]</p>
                 [cite_start]<span class="name">Vagdevi [cite: 9]</span>
-                [cite_start]<p style="margin-top: 0;">with [cite: 9]</p>
+                <p style="margin-top: 0;">with</p>
                 [cite_start]<p style="margin-bottom: 5px;">Chy. [cite: 10]</p>
                 [cite_start]<span class="name">Bhargav Raju [cite: 10]</span>
             </div>
@@ -241,24 +245,24 @@
             
             <div class="event-details">
                 <div class="event-item">
-                    <strong>Sumuhurtham:</strong>
+                    [cite_start]<strong>Sumuhurtham: [cite: 12]</strong>
                     <p>
                         [cite_start]On Sunday 02nd November, 2025 [cite: 12] [cite_start]at Night 10:04 p.m. [cite: 12]<br>
                         [cite_start]<span style="font-size: 0.9em; font-style: italic;">Uttarabhadra Nakshatrayuktha, Midhuna Lagnam. [cite: 12]</span>
                     </p>
                 </div>
                 <div class="event-item">
-                    <strong>Venue:</strong>
+                    [cite_start]<strong>Venue: [cite: 12]</strong>
                     <p>
                         [cite_start]Gajuwaka Club, Jaggu Junction, [cite: 12]<br>
-                        [cite_start]Backside Petrol Bunk, Gajuwaka, Visakhapatnam. [cite: 12]
+                        [cite_start]Backside Petrol Bunk, [cite: 12] [cite_start]Gajuwaka, Visakhapatnam. [cite: 12]
                     </p>
                 </div>
                 <div class="event-item">
-                    <strong>Reception & Dinner:</strong>
+                    [cite_start]<strong>Reception & Dinner: [cite: 12]</strong>
                     <p>
                         [cite_start]On Sunday 02nd November, 2025 [cite: 12]<br>
-                        [cite_start]from 7.00 p.m. onwards at the Marriage Venue. [cite: 12]
+                        [cite_start]from 7.00 p.m. onwards [cite: 12] [cite_start]at the Marriage Venue. [cite: 12]
                     </p>
                 </div>
             </div>
@@ -296,10 +300,10 @@
             </p>
             
             <div class="couple-names-telugu">
-                [cite_start]<p style="margin-bottom: 5px;">వధువు : చి॥ల॥సౌ॥ [cite: 22]</p>
+                <p style="margin-bottom: 5px;">వధువు : చి॥ల॥సౌ॥</p>
                 [cite_start]<span class="name">వాగ్దేవిని [cite: 22]</span>
                 [cite_start]<p style="margin-top: 0;">వరుడు : చి॥ [cite: 23]</p>
-                [cite_start]<span class="name">భార్గవ్ రాజు [cite: 24, 25] కు</span>
+                [cite_start]<span class="name">భార్గవ్ [cite: 24] [cite_start]రాజు కు [cite: 25]</span>
             </div>
             
             <p style="font-size: 1.1rem; margin-top: -10px;">
@@ -309,27 +313,27 @@
             
             <div class="event-details">
                 <div class="event-item">
-                    <strong>సుముహూర్తం:</strong>
+                    [cite_start]<strong>సుముహూర్తం: [cite: 28]</strong>
                     <p>
-                        [cite_start]తేది 02-11-2025 ఆదివారం [cite: 28] రాత్రి గం॥ [cite_start]10:04 ని॥లకు [cite: 28]<br>
+                        తేది 02-11-2025 ఆదివారం రాత్రి గం॥ [cite_start]10:04 ని॥లకు [cite: 28]<br>
                         [cite_start]ఉత్తరాభాద్ర నక్షత్రయుక్త, మిధునలగ్నమందు. [cite: 28]
                     </p>
                 </div>
                 <div class="event-item">
-                    <strong>కళ్యాణవేదిక:</strong>
+                    [cite_start]<strong>కళ్యాణవేదిక: [cite: 28]</strong>
                     <p>
                         [cite_start]గాజువాక క్లబ్, జగ్గు జంక్షన్, పెట్రోల్ బంక్ వెనుక. [cite: 28]<br>
                         [cite_start]గాజువాక, విశాఖపట్నం.. [cite: 28]
                     </p>
                 </div>
                 <div class="event-item">
-                    <strong>రిసెప్షన్ & విందు:</strong>
+                    [cite_start]<strong>రిసెప్షన్ & విందు: [cite: 28]</strong>
                     <p>
                         [cite_start]తేది 02-11-2025 ఆదివారం రాత్రి 7.00 గం॥ల నుండి కళ్యాణవేదిక వద్ద. [cite: 28]
                     </p>
                 </div>
                 <div class="event-item" style="align-items: flex-end;">
-                    <strong>అభ్యర్ధన:</strong>
+                    [cite_start]<strong>అభ్యర్ధన: [cite: 28]</strong>
                     <p>
                         [cite_start]నూతన వధూవరులను మీ పవిత్రమైన అమృత హస్తాలతో ఆశీర్వదించ ప్రార్ధన. [cite: 28]
                     </p>
@@ -341,7 +345,7 @@
                 [cite_start]శ్రీ కూరపాటి వెంకటేశ్వర రాజు, శ్రీమతి నాగశ్రీ [cite: 29]
             </div>
             <div class="compliments">
-                [cite_start]అమ్మమ్మ - తాతయ్య : పోరంకి నాంచార రాజు శ్రీమతి సరోజనమ్మ కుటుంబసభ్యులు మరియు బంధుమిత్రుల అభినందనలతో... [cite: 30]
+                [cite_start]అమ్మమ్మ - తాతయ్య : పోరంకి నాంచార రాజు శ్రీమతి సరోజనమ్మ [cite: 30] [cite_start]కుటుంబసభ్యులు మరియు బంధుమిత్రుల అభినందనలతో... [cite: 30]
             </div>
 
         </div> <div class="s3-link">
